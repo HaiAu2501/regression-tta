@@ -2,7 +2,7 @@ dataset:
   name: utkface
   config:
     filter_gender: null
-  val_indices: configs/utkface-all_val_indices.npy
+  val_indices: /kaggle/input/models/haiaunho/tta4reg/pytorch/default/2/configs/utkface-all_val_indices.npy # configs/utkface-all_val_indices.npy
   val_corruption:
     corruption_type: all
     severity: 5
