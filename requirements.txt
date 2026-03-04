@@ -6,3 +6,4 @@ pytorch-ignite
 timm
 albumentations
 opencv-python
+kagglehub
