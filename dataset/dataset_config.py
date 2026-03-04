@@ -1,5 +1,3 @@
-SVHN_PATH = "/path/to/svhn"
-MNIST_PATH = "/path/to/mnist"
-UTKFACE_PATH = "/path/to/utkface"
-BIWI_PATH = "/path/to/BiwiKinect"
-CALIFORNIA_HOUSING_PATH = "/path/to/california_housing"
+SVHN_PATH = "./data/SVHN"
+MNIST_PATH = "./data/MNIST"
+UTKFACE_PATH = "./data/UTKFace/UTKFace"

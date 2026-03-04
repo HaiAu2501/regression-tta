@@ -4,7 +4,7 @@ dataset:
     filter_gender: null
   val_indices: configs/utkface-all_val_indices.npy
   val_corruption:
-    corruption_type: gaussian_noise
+    corruption_type: all
     severity: 5
 
 regressor:

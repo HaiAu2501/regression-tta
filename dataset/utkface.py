@@ -3,13 +3,13 @@ from pathlib import Path
 
 from PIL import Image
 import numpy as np
-import imagenet_c
 
 from torchvision.transforms import v2 as transforms
 
 from .image_utils import (load_image, random_split, ImageDataset,
                           ImageTransformDataset, ImageSubset)
 from .dataset_config import UTKFACE_PATH
+from .corruptions import get_corruption_func
 
 
 class UTKFace(ImageDataset):
@@ -46,10 +46,14 @@ class UTKFace(ImageDataset):
 
 
 def get_utkface(config: dict[str, Any]) -> tuple[ImageDataset, ImageDataset]:
-    if (corruption := config["dataset"].get("val_corruption", None)) is not None:
-        corrupt_func = lambda x: Image.fromarray(
-            imagenet_c.corrupt(np.asarray(x), **corruption))
-        print(f"Corruption: {corruption}")
+    corruption_cfg = config["dataset"].get("val_corruption", None)
+
+    if corruption_cfg is not None:
+        corrupt_func = get_corruption_func(
+            corruption_type=corruption_cfg["corruption_type"],
+            severity=corruption_cfg["severity"],
+        )
+        print(f"Corruption: {corruption_cfg}")
     else:
         corrupt_func = lambda x: x
 
