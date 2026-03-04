@@ -1,0 +1,27 @@
+dataset:
+  config:
+    filter_gender: null
+  name: utkface
+  val_indices: configs/utkface-all_val_indices.npy
+epoch: 100
+evaluator:
+  compile_model: null
+optimizer:
+  config:
+    lr: 0.0001
+    weight_decay: 0.0005
+  name: Adam
+  param: all
+regressor:
+  config:
+    backbone: resnet50
+    in_channels: 3
+    pretrained: true
+  type: image
+train_dataloader:
+  batch_size: 64
+  shuffle: true
+trainer:
+  compile_model: null
+val_dataloader:
+  batch_size: 256
