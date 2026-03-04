@@ -4,8 +4,8 @@ from torch.utils.data import Dataset
 
 from .raw_datasets import get_mnist, get_svhn, get_transforms
 from .utkface import get_utkface
-from .biwi_kinect import get_biwi_kinect
-from .california_housing import get_calfornia_housing
+# from .biwi_kinect import get_biwi_kinect
+# from .california_housing import get_calfornia_housing
 
 
 def get_datasets(config: dict[str, Any]) -> tuple[Dataset, Dataset]:
@@ -25,13 +25,13 @@ def get_datasets(config: dict[str, Any]) -> tuple[Dataset, Dataset]:
             train_ds, val_ds = get_mnist(train_transform, val_transform)
         case "utkface":
             train_ds, val_ds = get_utkface(config)
-        case "biwi_kinect":
-            aug_config = config["dataset"].get("aug_config", {})
-            train_ds, val_ds = get_biwi_kinect(
-                config, classification=False, **aug_config)
-        case "calfornia_housing":
-            train_ds, val_ds = get_calfornia_housing(
-                config, classification=False)
+        # case "biwi_kinect":
+        #     aug_config = config["dataset"].get("aug_config", {})
+        #     train_ds, val_ds = get_biwi_kinect(
+        #         config, classification=False, **aug_config)
+        # case "calfornia_housing":
+        #     train_ds, val_ds = get_calfornia_housing(
+        #         config, classification=False)
         case _:
             raise ValueError(f"Invalid dataset: {name!r}")
 
