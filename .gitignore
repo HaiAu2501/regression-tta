@@ -2,3 +2,4 @@ env/
 data/
 bin/
 __pycache__/
+result/source/*/raw_features.pt

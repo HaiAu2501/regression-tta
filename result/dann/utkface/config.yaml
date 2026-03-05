@@ -1,0 +1,40 @@
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+dataset:
+  config:
+    filter_gender: null
+  name: utkface
+  val_corruption:
+    corruption_type: all
+    severity: 5
+  val_indices: configs/utkface-all_val_indices.npy
+evaluator:
+  compile_model: null
+optimizer:
+  config:
+    lr: 0.001
+    weight_decay: 0.0
+  name: Adam
+  param: fe_bn
+regressor:
+  config:
+    backbone: resnet50
+    in_channels: 3
+    pretrained: false
+  source: result/source/utkface/source_model_29700.pt
+  type: image
+tta:
+  config:
+    compile_model: null
+    disc_config:
+      hidden_dim: 1024
+      lr: 0.001
+      weight_decay: 0.0
+    lambda_final: 1.0
+    lambda_init: 0.0
+    max_iterations: 1000
+    source_features_file: result/source/utkface/raw_features.pt
+    train_mode: true
+val_dataloader:
+  batch_size: 256
