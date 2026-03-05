@@ -1,0 +1,36 @@
+dataset:
+  name: mnist
+
+regressor:
+  source: result/source/svhn/source_model_114500.pt
+  type: image
+  config:
+    backbone: resnet26
+    pretrained: false
+    in_channels: 3
+
+optimizer:
+  param: fe_bn
+  name: Adam
+  config:
+    lr: 0.001
+    weight_decay: 0.0
+
+tta:
+  config:
+    train_mode: true
+    rot_config:
+      hidden_dim: 1024
+      lr: 0.001
+      weight_decay: 0.0
+    compile_model: &compile_model null
+
+evaluator:
+  compile_model: *compile_model
+
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+
+val_dataloader:
+  batch_size: 256
