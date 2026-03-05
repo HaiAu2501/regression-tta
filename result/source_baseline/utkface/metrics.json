@@ -1,0 +1,119 @@
+[
+    {
+        "corruption_type": "gaussian_noise",
+        "severity": 5,
+        "rmse_loss": 36.927772870786185,
+        "mae_loss": 31.41693801413204,
+        "R2": -2.5614008072439822,
+        "r": -0.07047539709245922,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "shot_noise",
+        "severity": 5,
+        "rmse_loss": 34.71560261257568,
+        "mae_loss": 29.065162940307953,
+        "R2": -2.147487671225987,
+        "r": -0.0035426036972827663,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "impulse_noise",
+        "severity": 5,
+        "rmse_loss": 38.53366016379793,
+        "mae_loss": 33.25083711242354,
+        "R2": -2.8778869729764134,
+        "r": 0.10241444556295054,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "defocus_blur",
+        "severity": 5,
+        "rmse_loss": 11.886008979025855,
+        "mae_loss": 7.890979289706813,
+        "R2": 0.6310336764304256,
+        "r": 0.8303331175758359,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "motion_blur",
+        "severity": 5,
+        "rmse_loss": 7.133763533764163,
+        "mae_loss": 4.559949526075722,
+        "R2": 0.8670917193547443,
+        "r": 0.9440181787221763,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "zoom_blur",
+        "severity": 5,
+        "rmse_loss": 7.145292847136159,
+        "mae_loss": 4.735032083816705,
+        "R2": 0.8666617697312644,
+        "r": 0.9318291431227752,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "snow",
+        "severity": 5,
+        "rmse_loss": 6.717327739395152,
+        "mae_loss": 4.315453787439359,
+        "R2": 0.8821559398498794,
+        "r": 0.9424280528758091,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "fog",
+        "severity": 5,
+        "rmse_loss": 16.954657137496877,
+        "mae_loss": 12.902970760388104,
+        "R2": 0.24925466127863183,
+        "r": 0.7311160838778167,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "brightness",
+        "severity": 5,
+        "rmse_loss": 13.534269568491085,
+        "mae_loss": 9.863296904661464,
+        "R2": 0.5216076067753622,
+        "r": 0.7500128863265447,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "contrast",
+        "severity": 5,
+        "rmse_loss": 6.017778503349596,
+        "mae_loss": 4.042601689385151,
+        "R2": 0.9054226768075165,
+        "r": 0.9554959497846763,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "elastic_transform",
+        "severity": 5,
+        "rmse_loss": 7.323237791344499,
+        "mae_loss": 5.181700359892428,
+        "R2": 0.8599378162146101,
+        "r": 0.9301455810053069,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "pixelate",
+        "severity": 5,
+        "rmse_loss": 21.404706581175017,
+        "mae_loss": 15.919554814385151,
+        "R2": -0.1965564125164334,
+        "r": 0.498962211505423,
+        "model_dist": 0.0
+    },
+    {
+        "corruption_type": "jpeg_compression",
+        "severity": 5,
+        "rmse_loss": 14.662811318159662,
+        "mae_loss": 10.079192812697743,
+        "R2": 0.43850083721789246,
+        "r": 0.7035660518000778,
+        "model_dist": 0.0
+    }
+]

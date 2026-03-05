@@ -2,7 +2,7 @@ dataset:
   name: utkface
   config:
     filter_gender: null
-  val_indices: configs/utkface-all_val_indices.json
+  val_indices: configs/utkface-all_val_indices.npy
 
 regressor:
   source: result/source/utkface/source_model_29700.pt

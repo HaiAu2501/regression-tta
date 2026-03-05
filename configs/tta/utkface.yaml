@@ -28,7 +28,7 @@ tta:
     weight_bias: 1.0
     weight_exp: 1.0
     pc_config:
-      stat_file: result/source/utkface_all/feature_stats.pt
+      stat_file: result/source/utkface/feature_stats.pt
       contrib_top_k: 100
     loss_config:
       eps: 1.0e-8

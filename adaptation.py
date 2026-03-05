@@ -1,6 +1,8 @@
 from typing import Any
 from pprint import pprint
 import json
+import csv
+import copy
 from pathlib import Path
 import itertools
 
@@ -14,6 +16,7 @@ from ignite.handlers import ModelCheckpoint
 from utils.seed import fix_seed
 from model import create_regressor, Regressor, extract_bn_layers
 from dataset import get_datasets
+from dataset.corruptions import CORRUPTION_TYPES
 from evaluation.evaluator import RegressionEvaluator
 from tta import TTAEngine
 
@@ -46,6 +49,50 @@ def main(args):
     with Path(args.o, "config.yaml").open("w", encoding="utf-8") as f:
         yaml.dump(config, f)
 
+    corruption_cfg = config["dataset"].get("val_corruption", None)
+    is_all = (corruption_cfg is not None
+              and corruption_cfg.get("corruption_type") == "all")
+
+    if is_all:
+        severity = corruption_cfg["severity"]
+        all_rows: list[dict[str, Any]] = []
+
+        for ctype in CORRUPTION_TYPES:
+            print(f"\n{'='*60}")
+            print(f"  Corruption: {ctype}  (severity={severity})")
+            print(f"{'='*60}")
+
+            cfg = copy.deepcopy(config)
+            cfg["dataset"]["val_corruption"]["corruption_type"] = ctype
+
+            metrics = run_single(cfg, args)
+            row = {"corruption_type": ctype, "severity": severity}
+            for phase in ("online", "offline"):
+                for k, v in metrics[phase].items():
+                    row[f"{phase}/{k}"] = v
+            all_rows.append(row)
+
+        # --- write CSV ---
+        csv_path = Path(args.o, "metrics.csv")
+        fieldnames = list(all_rows[0].keys())
+        with csv_path.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(all_rows)
+        print(f"\nSaved all-corruption results to {csv_path}")
+
+        # also save as json for convenience
+        with Path(args.o, "metrics.json").open("w", encoding="utf-8") as f:
+            json.dump(all_rows, f, indent=4, ensure_ascii=False)
+    else:
+        metrics = run_single(config, args)
+        with Path(args.o, "metrics.json").open("w", encoding="utf-8") as f:
+            json.dump(metrics, f, indent=4, ensure_ascii=False)
+
+
+def run_single(config: dict[str, Any], args) -> dict[str, Any]:
+    """Run adaptation + evaluation for a single configuration.
+    Returns the metrics dict."""
     regressor = create_regressor(config).cuda()
     regressor.load_state_dict(torch.load(p := config["regressor"]["source"]))
     print(f"load {p}")
@@ -72,8 +119,7 @@ def main(args):
         "offline": reg_evaluator.state.metrics
     }
     pprint(metrics)
-    with Path(args.o, "metrics.json").open("w", encoding="utf-8") as f:
-        json.dump(metrics, f, indent=4, ensure_ascii=False)
+    return metrics
 
 
 def create_optimizer(net: Regressor, config: dict[str, Any]) -> torch.optim.Optimizer:
