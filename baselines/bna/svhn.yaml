@@ -1,0 +1,27 @@
+dataset:
+  name: mnist
+
+regressor:
+  source: result/source/svhn/source_model_114500.pt
+  type: image
+  config:
+    backbone: resnet26
+    pretrained: false
+    in_channels: 3
+
+tta:
+  config:
+    train_mode: true       # switch model to .train() so BN updates stats
+    reset_stats: true      # reset running_mean/var before adaptation (paper)
+    bn_momentum: null      # null → cumulative moving average (paper default)
+    compile_model: &compile_model null
+
+evaluator:
+  compile_model: *compile_model
+
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+
+val_dataloader:
+  batch_size: 256

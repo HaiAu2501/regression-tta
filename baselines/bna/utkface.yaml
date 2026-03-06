@@ -1,0 +1,35 @@
+dataset:
+  name: utkface
+  config:
+    filter_gender: null
+  val_indices: configs/utkface-all_val_indices.npy
+  val_corruption:
+    corruption_type: all
+    severity: 5
+
+regressor:
+  source: result/source/utkface/source_model_29700.pt
+  type: image
+  config:
+    backbone: resnet50
+    pretrained: false
+    in_channels: 3
+
+# BNA does NOT use an optimizer — no weights are changed.
+# Keys below are kept for config-schema compatibility but unused.
+tta:
+  config:
+    train_mode: true       # switch model to .train() so BN updates stats
+    reset_stats: true      # reset running_mean/var before adaptation (paper)
+    bn_momentum: null      # null → cumulative moving average (paper default)
+    compile_model: &compile_model null
+
+evaluator:
+  compile_model: *compile_model
+
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+
+val_dataloader:
+  batch_size: 256
