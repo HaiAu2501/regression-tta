@@ -1,0 +1,22 @@
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+dataset:
+  name: mnist
+evaluator:
+  compile_model: null
+regressor:
+  config:
+    backbone: resnet26
+    in_channels: 3
+    pretrained: false
+  source: result/source/svhn/source_model_114500.pt
+  type: image
+tta:
+  config:
+    bn_momentum: null
+    compile_model: null
+    reset_stats: true
+    train_mode: true
+val_dataloader:
+  batch_size: 256
