@@ -1,0 +1,30 @@
+dataset:
+  name: mnist
+
+regressor:
+  source: result/source/svhn/source_model_114500.pt
+  type: image
+  config:
+    backbone: resnet26
+    pretrained: false
+    in_channels: 3
+
+tta:
+  config:
+    train_mode: true
+    bottom_up: true
+    epochs_per_block: 1
+    lr: 0.001
+    weight_decay: 0.0
+    lr_decay: 1.5            # smaller decay for smaller network
+    compile_model: &compile_model null
+
+evaluator:
+  compile_model: *compile_model
+
+adapt_dataloader:
+  batch_size: 64
+  shuffle: true
+
+val_dataloader:
+  batch_size: 256
