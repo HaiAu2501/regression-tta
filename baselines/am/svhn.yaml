@@ -9,14 +9,18 @@ regressor:
     pretrained: false
     in_channels: 3
 
+optimizer:
+  param: all
+  name: Adam
+  config:
+    lr: 0.001
+    weight_decay: 0.0
+
 tta:
   config:
     train_mode: true
-    bottom_up: true
-    epochs_per_block: 1
-    lr: 0.001
-    weight_decay: 0.0
-    lr_decay: 5.0          
+    act_stats_file: result/source/svhn/act_stats.pt
+    max_layers: 8
     compile_model: &compile_model null
 
 evaluator:
