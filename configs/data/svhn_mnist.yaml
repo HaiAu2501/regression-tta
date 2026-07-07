@@ -5,6 +5,7 @@ source:
   name: svhn
 target:
   name: mnist
+download: false
 
 dataloader:
   train:

@@ -6,3 +6,6 @@ optimizer:
   name: Adam
   lr: 0.001
   weight_decay: 0.0
+
+reset_stats: true
+bn_momentum: null

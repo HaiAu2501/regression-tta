@@ -11,10 +11,26 @@ paths:
   data_root: datasets
   checkpoint_dir: checkpoints
   source_dir: checkpoints/source
+  source_model: null
+  feature_stats: null
+  raw_features: null
+  act_stats: null
 
 run:
   stage: adapt
   save_model: false
+  train_mode: true
+
+train:
+  epochs: 100
+  optimizer:
+    params: all
+    name: Adam
+    lr: 1.0e-4
+    weight_decay: 5.0e-4
+
+stats:
+  save_raw_features: false
 
 hydra:
   run:

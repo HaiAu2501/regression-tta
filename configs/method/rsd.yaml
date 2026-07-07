@@ -6,3 +6,8 @@ optimizer:
   name: Adam
   lr: 0.001
   weight_decay: 0.0
+
+subspace:
+  top_k: 100
+  eps: 1.0e-8
+  trade_off: 1.0

@@ -6,3 +6,8 @@ optimizer:
   name: Adam
   lr: 0.001
   weight_decay: 0.0
+
+rotation:
+  hidden_dim: null
+  lr: 0.001
+  weight_decay: 0.0

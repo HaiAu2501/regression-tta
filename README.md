@@ -10,6 +10,15 @@ python main.py method=psc data=utkface_corrupt model=resnet50
 python main.py method=source data=svhn_mnist model=resnet26
 ```
 
+Useful stages:
+
+```bash
+python main.py run.stage=train_source data=svhn_mnist model=resnet26
+python main.py run.stage=feature_stats data=svhn_mnist model=resnet26
+python main.py run.stage=act_stats data=utkface_corrupt model=resnet50
+python main.py method=psc data=utkface_corrupt model=resnet50
+```
+
 Current layout:
 
 - `data/`: source/target dataset-pair builders.

@@ -1,5 +1,11 @@
 from omegaconf import DictConfig
 
+from src.adapt import run_target_experiment
+
 
 def run(cfg: DictConfig) -> None:
-    raise NotImplementedError("Source-only baseline is not ported yet.")
+    run_target_experiment(
+        cfg,
+        build_step=lambda model, optimizer, device, loader: None,
+        use_optimizer=False,
+    )

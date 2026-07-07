@@ -13,6 +13,7 @@ target:
   corruption:
     type: all
     severity: 5
+download: false
 
 dataloader:
   train:
