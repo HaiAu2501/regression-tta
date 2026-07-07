@@ -1,9 +1,0 @@
-pandas
-scipy
-pyyaml
-scikit-image
-pytorch-ignite
-timm
-albumentations
-opencv-python
-kagglehub

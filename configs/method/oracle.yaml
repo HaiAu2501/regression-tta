@@ -1,0 +1,8 @@
+name: oracle
+module: baselines.oracle
+
+optimizer:
+  params: all
+  name: Adam
+  lr: 1.0e-4
+  weight_decay: 5.0e-4

@@ -1,0 +1,8 @@
+name: fr
+module: baselines.fr
+
+optimizer:
+  params: fe_bn
+  name: Adam
+  lr: 0.001
+  weight_decay: 0.0

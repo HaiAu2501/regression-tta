@@ -1,0 +1,6 @@
+name: resnet26
+type: image
+backbone: resnet26
+pretrained: false
+in_channels: 3
+feature_dim: 2048

@@ -1,6 +1,9 @@
 env/
-data/
 bin/
 __pycache__/
+outputs/
+checkpoints/
+datasets/
+*.pyc
 result/source/*/raw_features.pt
 result/source/*/act_stats.pt

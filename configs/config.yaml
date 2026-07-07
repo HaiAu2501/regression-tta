@@ -1,0 +1,21 @@
+defaults:
+  - data: utkface_corrupt
+  - model: resnet50
+  - method: psc
+  - _self_
+
+seed: 42
+device: cuda
+
+paths:
+  data_root: datasets
+  checkpoint_dir: checkpoints
+  source_dir: checkpoints/source
+
+run:
+  stage: adapt
+  save_model: false
+
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}_${method.name}_${data.name}

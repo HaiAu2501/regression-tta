@@ -1,0 +1,15 @@
+name: psc
+module: src.psc
+
+optimizer:
+  params: fe_bn
+  name: Adam
+  lr: 0.001
+  weight_decay: 0.0
+
+subspace:
+  top_k: 100
+  weight_bias: 1.0
+  weight_exp: 1.0
+  slack_weight: 1.0
+  eps: 1.0e-8

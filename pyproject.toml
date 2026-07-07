@@ -1,0 +1,21 @@
+[project]
+name = "regression-tta"
+version = "0.1.0"
+description = "Test-time adaptation for regression experiments centered on PSC."
+requires-python = ">=3.10"
+dependencies = [
+  "hydra-core",
+  "omegaconf",
+  "torch",
+  "torchvision",
+  "pandas",
+  "scipy",
+  "scikit-image",
+  "pytorch-ignite",
+  "timm",
+  "albumentations",
+  "opencv-python",
+]
+
+[tool.ruff]
+line-length = 88

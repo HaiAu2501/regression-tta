@@ -1,0 +1,26 @@
+name: utkface_corrupt
+module: data.utkface_corrupt
+
+source:
+  name: utkface
+  filter_gender: null
+target:
+  name: utkface
+  filter_gender: null
+  split:
+    val_indices: null
+    train_ratio: 0.8
+  corruption:
+    type: all
+    severity: 5
+
+dataloader:
+  train:
+    batch_size: 64
+    shuffle: true
+  adapt:
+    batch_size: 64
+    shuffle: true
+  eval:
+    batch_size: 256
+    shuffle: false

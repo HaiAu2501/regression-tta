@@ -1,0 +1,6 @@
+name: resnet50
+type: image
+backbone: resnet50
+pretrained: true
+in_channels: 3
+feature_dim: 2048

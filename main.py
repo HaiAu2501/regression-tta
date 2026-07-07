@@ -1,4 +1,13 @@
-import torch
+from omegaconf import DictConfig
+import hydra
 
-print(torch.__version__)
-print(torch.cuda.is_available())
+from src.runner import run
+
+
+@hydra.main(version_base=None, config_path="configs", config_name="config")
+def main(cfg: DictConfig) -> None:
+    run(cfg)
+
+
+if __name__ == "__main__":
+    main()
